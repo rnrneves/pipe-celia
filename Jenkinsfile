@@ -21,8 +21,7 @@ pipeline {
         stage('Deploy App') {
             steps {
                 script {
-                    dockerapp.stop('proj-celia')
-                    dockerapp.rm('proj-celia')
+                    dockerapp.stop("${env.BUILD_ID}")
                     dockerapp.run('--name proj-celia -dti -p 80:80 ')
                 }
             }
