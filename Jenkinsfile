@@ -21,7 +21,7 @@ pipeline {
         stage('Deploy App') {
             steps {
                 script {
-                    dockerapp.run("${env.BUILD_ID}")
+                    dockerapp.run('-dti ')
                 }
             }
         }       
