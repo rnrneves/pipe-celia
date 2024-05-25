@@ -12,7 +12,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                   docker= docker.build("celiala/site:${env.BUILD_ID}",
+                   dockerapp = docker.build("celiala/site:${env.BUILD_ID}",
                   '-f Dockerfile . ')
                 }
             }
@@ -21,8 +21,7 @@ pipeline {
         stage('Deploy App') {
             steps {
                 script {
-                    img = 'celiala/site:${env.BUILD_ID}'
-                    docker.image("${img}").run('-d -p 80:80')
+                    dockerapp.run("${env.BUILD_ID}")('-d -p 80:80')
                 }
             }
         }       
