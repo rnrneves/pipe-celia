@@ -21,7 +21,7 @@ pipeline {
         stage('Deploy App') {
             steps {
                 script {
-                    dockerapp.run('-dti ')
+                    dockerapp.run('-dti -p 80:80 ')
                 }
             }
         }       
