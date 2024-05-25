@@ -12,7 +12,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                   docker= docker.build("celiala/site:{$env.BUILD_ID}",
+                   docker= docker.build("celiala/site:${env.BUILD_ID}",
                   '-f Dockerfile . ')
                 }
             }
