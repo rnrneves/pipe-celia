@@ -16,6 +16,15 @@ pipeline {
                   '-f Dockerfile . ')
                 }
             }
-        }        
+        } 
+
+        stage('Deploy App') {
+            steps {
+                script{
+                    img = "celiala/site:${env.BUILD_ID}"
+                    docker.image("${img}").run('-d -p 80:80')
+                }
+            }
+        }       
     }
 }
